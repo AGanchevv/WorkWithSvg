@@ -1,0 +1,148 @@
+\hypertarget{class_circle}{}\doxysection{Circle Class Reference}
+\label{class_circle}\index{Circle@{Circle}}
+
+
+Class that represents the properties of class \mbox{\hyperlink{class_circle}{Circle}} which inherits the abstract class \mbox{\hyperlink{class_shape}{Shape}}.  
+
+
+
+
+{\ttfamily \#include $<$Circle.\+h$>$}
+
+Inheritance diagram for Circle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_circle}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_circle_ad1ecfcfc7bf34529c6a6d6c448bf70fe}\label{class_circle_ad1ecfcfc7bf34529c6a6d6c448bf70fe}} 
+\mbox{\hyperlink{class_circle_ad1ecfcfc7bf34529c6a6d6c448bf70fe}{Circle}} ()
+\begin{DoxyCompactList}\small\item\em default constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle_a5a5869029e12c990a9e8f744f90d0930}{Circle}} (const \mbox{\hyperlink{class_circle}{Circle}} \&other)
+\begin{DoxyCompactList}\small\item\em copy constructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle}{Circle}} \& \mbox{\hyperlink{class_circle_aada35d0dcd950c3be40ea330b696c1d5}{operator=}} (const \mbox{\hyperlink{class_circle}{Circle}} \&other)
+\begin{DoxyCompactList}\small\item\em operator = \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_circle_ae3f30436e645d73e368e8ee55f8d1650}\label{class_circle_ae3f30436e645d73e368e8ee55f8d1650}} 
+\mbox{\hyperlink{class_circle_ae3f30436e645d73e368e8ee55f8d1650}{$\sim$\+Circle}} ()
+\begin{DoxyCompactList}\small\item\em destructor \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_circle_a1d027e871fc44807db25760dc581d245}{Circle}} (int new\+Cx, int new\+Cy, int newR, const char $\ast$new\+Colour)
+\item 
+void \mbox{\hyperlink{class_circle_ae4729380038dc9321713e4a9ba25a494}{set\+Cx}} (int new\+Cx)
+\item 
+\mbox{\Hypertarget{class_circle_aa23d4105007f7a3d1eab348b5af31a4d}\label{class_circle_aa23d4105007f7a3d1eab348b5af31a4d}} 
+int {\bfseries getX} () const
+\item 
+\mbox{\Hypertarget{class_circle_a7c143200645387030699cdab6ac66515}\label{class_circle_a7c143200645387030699cdab6ac66515}} 
+void {\bfseries set\+Cy} (int new\+Cy)
+\item 
+\mbox{\Hypertarget{class_circle_abaed5dde7d530b94cd21d726bf804190}\label{class_circle_abaed5dde7d530b94cd21d726bf804190}} 
+int {\bfseries getY} () const
+\item 
+\mbox{\Hypertarget{class_circle_ab0e739ed31642d5d3124b468a19ed54b}\label{class_circle_ab0e739ed31642d5d3124b468a19ed54b}} 
+void {\bfseries setR} (int newR)
+\item 
+\mbox{\Hypertarget{class_circle_a955ba2846a5c3a9f42b1e38f7ace0860}\label{class_circle_a955ba2846a5c3a9f42b1e38f7ace0860}} 
+int {\bfseries getR} () const
+\item 
+\mbox{\Hypertarget{class_circle_accbc318abec58176dc8ccd4e7ee2927c}\label{class_circle_accbc318abec58176dc8ccd4e7ee2927c}} 
+void {\bfseries set\+Colour} (const char $\ast$new\+Colour)
+\item 
+\mbox{\Hypertarget{class_circle_a728e7809623ed1ea68a2195d7b3ccbf3}\label{class_circle_a728e7809623ed1ea68a2195d7b3ccbf3}} 
+const char $\ast$ {\bfseries get\+Colour} () const
+\item 
+void \mbox{\hyperlink{class_circle_a1c6b38b402bc72f62cc95016d0cbbb67}{save}} (std\+::ostream \&out) override
+\begin{DoxyCompactList}\small\item\em overrade save method \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_circle_a1dbdb30cc5638d5da13454a1e8fe0106}\label{class_circle_a1dbdb30cc5638d5da13454a1e8fe0106}} 
+void \mbox{\hyperlink{class_circle_a1dbdb30cc5638d5da13454a1e8fe0106}{print}} () override
+\begin{DoxyCompactList}\small\item\em overrade save method \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that represents the properties of class \mbox{\hyperlink{class_circle}{Circle}} which inherits the abstract class \mbox{\hyperlink{class_shape}{Shape}}. 
+
+$<$ inherits base class 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_circle_a5a5869029e12c990a9e8f744f90d0930}\label{class_circle_a5a5869029e12c990a9e8f744f90d0930}} 
+\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\doxysubsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle}{Circle}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+copy constructor 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & copy constructor \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_circle_a1d027e871fc44807db25760dc581d245}\label{class_circle_a1d027e871fc44807db25760dc581d245}} 
+\index{Circle@{Circle}!Circle@{Circle}}
+\index{Circle@{Circle}!Circle@{Circle}}
+\doxysubsubsection{\texorpdfstring{Circle()}{Circle()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Circle\+::\+Circle (\begin{DoxyParamCaption}\item[{int}]{new\+Cx,  }\item[{int}]{new\+Cy,  }\item[{int}]{newR,  }\item[{const char $\ast$}]{new\+Colour }\end{DoxyParamCaption})}
+
+general purpose constructor setters and getters 
+\begin{DoxyParams}{Parameters}
+{\em new\+Colour} & constructor will all necessary data given \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_circle_aada35d0dcd950c3be40ea330b696c1d5}\label{class_circle_aada35d0dcd950c3be40ea330b696c1d5}} 
+\index{Circle@{Circle}!operator=@{operator=}}
+\index{operator=@{operator=}!Circle@{Circle}}
+\doxysubsubsection{\texorpdfstring{operator=()}{operator=()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_circle}{Circle}} \& Circle\+::operator= (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{class_circle}{Circle}} \&}]{other }\end{DoxyParamCaption})}
+
+
+
+operator = 
+
+
+\begin{DoxyParams}{Parameters}
+{\em other} & operator = \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_circle_a1c6b38b402bc72f62cc95016d0cbbb67}\label{class_circle_a1c6b38b402bc72f62cc95016d0cbbb67}} 
+\index{Circle@{Circle}!save@{save}}
+\index{save@{save}!Circle@{Circle}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Circle\+::save (\begin{DoxyParamCaption}\item[{std\+::ostream \&}]{out }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+overrade save method 
+
+$<$ there are specific standarts that must be met in order to create svg file successfully
+\begin{DoxyParams}{Parameters}
+{\em out} & this method writes in the file and saves the rectangle information in it \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_shape_a9bbe20def266fed4955e419d7b527edf}{Shape}}.
+
+\mbox{\Hypertarget{class_circle_ae4729380038dc9321713e4a9ba25a494}\label{class_circle_ae4729380038dc9321713e4a9ba25a494}} 
+\index{Circle@{Circle}!setCx@{setCx}}
+\index{setCx@{setCx}!Circle@{Circle}}
+\doxysubsubsection{\texorpdfstring{setCx()}{setCx()}}
+{\footnotesize\ttfamily void Circle\+::set\+Cx (\begin{DoxyParamCaption}\item[{int}]{new\+Cx }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}{Parameters}
+{\em new\+Cx} & setters and getters \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Circle.\+h\item 
+Circle.\+cpp\end{DoxyCompactItemize}
