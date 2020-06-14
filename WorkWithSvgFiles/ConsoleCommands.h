@@ -144,7 +144,7 @@ bool close(bool isFileOpen, Vector<Shape*> shapes, const char* currentFile) //!<
 	{
 		std::cout << "There is no file opened!" << std::endl; //!< shows a message
 
-		return true;
+		return false;
 	}
 }
 

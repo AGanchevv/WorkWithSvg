@@ -146,7 +146,7 @@ inline T Vector<T>::popBack() //!< returns vector's last element
 	{
 		throw std::logic_error("The vector is already empty!");
 	}
-	return this->data[--index];
+	return this->data[--size];
 }
 
 template<class T>

@@ -16,7 +16,7 @@ void consoleMenu() //!< combines all the methods that can be performed by the us
 {
 	Vector<Shape*> shapes; //!< creates a vector type Shape
 
-	char* currentFile; //!< 
+	char* currentFile = new char[300]; //!< 
 	bool isFileOpen = false, exit = false; //!< flags
 
 	help(); //!< shows all of the supported commands
@@ -114,4 +114,5 @@ void consoleMenu() //!< combines all the methods that can be performed by the us
 		}
 		}
 	}
+	delete[] currentFile;
 }
