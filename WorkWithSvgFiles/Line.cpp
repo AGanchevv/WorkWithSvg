@@ -111,13 +111,8 @@ const char * Line::getStroke() const
 
 void Line::save(std::ostream & out) //!< this method writes in the file and saves the line information in it
 {                                   //!< there are specific standarts that must be met in order to create svg file successfully
-	out << "  <line x1=\"" << getX1()
-		<< "\" y1=\"" << getY1() //!< for the quotation marks is used the symbol \ before them, because otherwise
-		<< "\" x2=\"" << getX2()                 //!< it won't be read by as elemnt of the text by the program
-		<< "\" y2=\"" << getY2()
-		<< "\" stroke=\"" << getStroke()
-		<< "\" />" << std::endl;
-}
+	out << "  <line x1=\"" << getX1() << "\" y1=\"" << getY1() << "\" x2=\"" << getX2() << "\" y2=\"" << getY2() << "\" stroke=\"" << getStroke() << "\" />" << std::endl;
+} //!< for the quotation marks is used the symbol \ before them, because otherwise it won't be read by as element of the text by the program
 
 void Line::print() //!< shows line information on the console
 {

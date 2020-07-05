@@ -327,7 +327,7 @@ Vector<Shape*> eraseShape(bool isFileOpen, Vector<Shape*> shapes, Vector<char*> 
 	{
 		int index = charToInt(userChoice[1]); //!< takes the index and transformes it to int
 
-		if (index <= shapes.length()) //!< verification if this a shape with this index exists
+		if (index <= shapes.length() && index >= 1) //!< verification if this a shape with this index exists
 		{
 			erase(index - 1, shapes); //!< erases shape
 			std::cout << "Successfully erased!" << std::endl;
@@ -458,7 +458,7 @@ Vector<Shape*> translateByIndex(int index, int vertical, int horizontal, const c
 {
 	Vector<Shape*> shapes;
 	Vector<char*> info;
-	int br = 0; //!< variable that increases with each shape
+	int br = 0; //!< variable that increases with each shape in order to change only the shape with the given index
 
 	std::ifstream in;
 	in.open(other);
@@ -614,11 +614,11 @@ Vector<Shape*> rectWithinCircle(Vector<char*> info, Vector<Shape*> shapes, int c
 	width = charToInt(info[3]);
 	height = charToInt(info[4]);
 
-	int topRightX = x, topRightY = y; //!< in the svg format the given coordinates are the topRight coordinates 
-	int downLeftX = x + width, downLeftY = y + height; //!< because of the coordinate system in svg file
+	int topLeftX = x, topLeftY = y; //!< in the svg format the given coordinates are the topLeft coordinates 
+	int bottomeRightX = x + width, bottomeRightY = y + height; //!< because of the coordinate system in svg file
 													   //!< the downLeft coordinates are obstained by adding the width and height
-	if (topRightX >= circleX - circleR && topRightY >= circleY - circleR //!< verification if the two opposite edges of the rectangle
-		&& downLeftX <= circleX + circleR && downLeftY <= circleY + circleR) //!< are in the circle area, because the ractangle is symmetrical
+	if (topLeftX >= circleX - circleR && topLeftY >= circleY - circleR //!< verification if the two opposite edges of the rectangle
+		&& bottomeRightX <= circleX + circleR && bottomeRightY <= circleY + circleR) //!< are in the circle area, because the ractangle is symmetrical
 	{
 		colour = new char[strlen(info[5]) + 1];
 		strcpy_s(colour, strlen(info[5]) + 1, info[5]);
@@ -697,7 +697,7 @@ Vector<Shape*> withinCircle(const char* other, int circleX, int circleY, int cir
 	return shapes;
 }
 
-Vector<Shape*> circleWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topRightX, double topRightY, double bottomeLeftX, double bottomeLeftY)
+Vector<Shape*> circleWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topLeftX, double topLeftY, double bottomeRightX, double bottomeRightY)
 {                          //!< functions that checks if a circle is within rectangle and adds it to the vector
 	int cx, cy, r;
 	char* colour;
@@ -711,9 +711,9 @@ Vector<Shape*> circleWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, 
 	cy = charToInt(info[2]);
 	r = charToInt(info[3]);
 
-	if (cx > topRightX && cx < bottomeLeftX && cy > topRightY && cy < bottomeLeftY
-		&& cx + r >= topRightX && cx - r <= bottomeLeftX //!< checks if the coordinates are between the two opposite rectangle edges
-		&& cy + r >= topRightY && cy - r <= bottomeLeftY) //!< and if the maximum and minimum circle values are still within the circle
+	if (cx > topLeftX && cx < bottomeRightX && cy > topLeftY && cy < bottomeRightY
+		&& cx + r >= topLeftX && cx - r <= bottomeRightX //!< checks if the coordinates are between the two opposite rectangle edges
+		&& cy + r >= topLeftY && cy - r <= bottomeRightY) //!< and if the maximum and minimum circle values are still within the circle
 	{
 		colour = new char[strlen(info[4]) + 1];
 		strcpy_s(colour, strlen(info[4]) + 1, info[4]);
@@ -724,7 +724,7 @@ Vector<Shape*> circleWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, 
 	return shapes;
 }
 
-Vector<Shape*> rectWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topRightX, double topRightY, double bottomeLeftX, double bottomeLeftY)
+Vector<Shape*> rectWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topLeftX, double topLeftY, double bottomeRightX, double bottomeRightY)
 {                       //!< functions that checks if a rectangle is within rectangle and adds it to the vector
 	int x, y, width, height;
 	char* colour;
@@ -739,9 +739,9 @@ Vector<Shape*> rectWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, do
 	width = charToInt(info[3]);
 	height = charToInt(info[4]);
 
-	if (x >= topRightX && x <= bottomeLeftX && y >= topRightY && y <= bottomeLeftY
-		&& x + width >= topRightX && x - width <= bottomeLeftX //!< checks if the two opposite circle(circle from the file) edges are IN
-		&& y + height >= topRightY && y - height <= bottomeLeftY) //!< the space between the  two opposite edges of the other circle
+	if (x >= topLeftX && x <= bottomeRightX && y >= topLeftY && y <= bottomeRightY
+		&& x + width >= topLeftX && x - width <= bottomeRightX //!< checks if the two opposite circle(circle from the file) edges are IN
+		&& y + height >= topLeftY && y - height <= bottomeRightY) //!< the space between the  two opposite edges of the other circle
 	{
 		colour = new char[strlen(info[5]) + 1];
 		strcpy_s(colour, strlen(info[5]) + 1, info[5]);
@@ -752,7 +752,7 @@ Vector<Shape*> rectWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, do
 	return shapes;
 }
 
-Vector<Shape*> lineWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topRightX, double topRightY, double bottomeLeftX, double bottomeLeftY)
+Vector<Shape*> lineWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, double topLeftX, double topLeftY, double bottomeRightX, double bottomeRightY)
 {                          //!< functions that checks if a line is within rectangle and adds it to the vector
 	int x1, y1, x2, y2;
 	char* stroke;
@@ -767,10 +767,10 @@ Vector<Shape*> lineWithinRectangle(Vector<char*> info, Vector<Shape*> shapes, do
 	x2 = charToInt(info[3]);
 	y2 = charToInt(info[4]);
 
-	if (x1 >= topRightX && y1 >= topRightY //!< checks if the end of the line are between the two opposite edges
-		&& x1 <= bottomeLeftX && y1 <= bottomeLeftY //!< of the rectangle
-		&& x2 >= topRightX && y2 >= topRightY
-		&& x2 <= bottomeLeftX && y2 <= bottomeLeftY)
+	if (x1 >= topLeftX && y1 >= topLeftY //!< checks if the end of the line are between the two opposite edges
+		&& x1 <= bottomeRightX && y1 <= bottomeRightY //!< of the rectangle
+		&& x2 >= topLeftX && y2 >= topLeftY
+		&& x2 <= bottomeRightX && y2 <= bottomeRightY)
 	{
 		stroke = new char[strlen(info[4]) + 1];
 		strcpy_s(stroke, strlen(info[4]) + 1, info[4]);
@@ -786,12 +786,12 @@ Vector<Shape*> withinRectangle(const char* other, int rectangleX, int rectangleY
 	Vector<Shape*> shapes;           //!< that are within the rectangle
 	Vector<char*> info;
 
-	int topRightX, topRightY, bottomeLeftX, bottomeLeftY;
+	int topLeftX, topLeftY, bottomeRightX, bottomeRightY;
 
-	topRightX = rectangleX;
-	topRightY = rectangleY;
-	bottomeLeftX = rectangleX + rectangleWidth;
-	bottomeLeftY = rectangleY + rectangleHeight;
+	topLeftX = rectangleX;
+	topLeftY = rectangleY;
+	bottomeRightX = rectangleX + rectangleWidth;
+	bottomeRightY = rectangleY + rectangleHeight;
 
 	std::ifstream in;
 	in.open(other);
@@ -813,15 +813,15 @@ Vector<Shape*> withinRectangle(const char* other, int rectangleX, int rectangleY
 
 		if (strcmp(info[0], " <circle") == 0)
 		{
-			shapes = circleWithinRectangle(info, shapes, topRightX, topRightY, bottomeLeftX, bottomeLeftY);
+			shapes = circleWithinRectangle(info, shapes, topLeftX, topLeftY, bottomeRightX, bottomeRightY);
 		}
 		if (strcmp(info[0], " <rect") == 0)
 		{
-			shapes = rectWithinRectangle(info, shapes, topRightX, topRightY, bottomeLeftX, bottomeLeftY);
+			shapes = rectWithinRectangle(info, shapes, topLeftX, topLeftY, bottomeRightX, bottomeRightY);
 		}
 		if (strcmp(info[0], " <line") == 0)
 		{
-			shapes = lineWithinRectangle(info, shapes, topRightX, topRightY, bottomeLeftX, bottomeLeftY);
+			shapes = lineWithinRectangle(info, shapes, topLeftX, topLeftY, bottomeRightX, bottomeRightY);
 		}
 	}
 	in.close();
@@ -882,4 +882,3 @@ void withinFile(bool isFileOpen, Vector<char*> userChoice, Vector<Shape*> shapes
 		std::cout << "There is no file opened!" << std::endl;
 	}
 }
-

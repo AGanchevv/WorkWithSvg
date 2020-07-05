@@ -20,8 +20,9 @@ public:
 	~Vector();
 
 	Vector<T>& push_back(const T& other); //!< adds element at the end of the vector
-	Vector<T>& push(const T& other); //!< adds element at the beginning og the vector
+	Vector<T>& push(const T& other); //!< adds element at the beginning of the vector
 	T popBack(); //!< returns the element at the end of the vector
+	T pop(); //!< return the first element of the vector
 
 	Vector<T>& operator+=(const Vector<T>& other); //!< operator += for two vectors
 	Vector<T> operator+(const Vector<T>& other) const; //!< operator + for two vectors
@@ -147,6 +148,16 @@ inline T Vector<T>::popBack() //!< returns vector's last element
 		throw std::logic_error("The vector is already empty!");
 	}
 	return this->data[--size];
+}
+
+template<class T>
+inline T Vector<T>::pop()
+{
+	if (this->size == 0)
+	{
+		throw std::logic_error("The vector is already empty!");
+	}
+	return this->data[0];
 }
 
 template<class T>
@@ -293,21 +304,18 @@ inline Vector<T>& Vector<T>::deleteElementByIndex(size_t index) //!< deletes ele
 {
 	T *container = new T[this->size - 1];
 
-	for (int i = 0; i < this->size - 1; i++)
+	for (int i = 0; i < index; i++)
 	{
-		if (i >= index && i != this->size - 2)
-		{
-			container[i] = this->data[i + 1];
-		}
-		else
-		{
-			container[i] = this->data[i];
-		}
+		container[i] = this->data[i];
+	}
+	for (int i = index; i < this->size - 1; i++)
+	{
+		container[i] = this->data[i + 1];
 	}
 
 	this->destroy();
-	this->data = container;
 	this->size--;
+	this->data = container;
 
 	return *this;
 }

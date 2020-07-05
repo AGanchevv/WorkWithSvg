@@ -17,11 +17,10 @@ Vector<char*> splitBySpace(char* other) //!< splits a sentance by space and retu
 	{
 		br++;
 
-		if (other[i] == ' ' && i != 0) //!< case when the element is space and it is not in the start fo the string
+		if (other[i] == ' ' && i != 0) //!< case when the element is space and it is not in the start of the string
 		{
-			int varBr = br; //!< saves the br
+			//int varBr = br; //!< saves the current br value
 			char* container = new char[br - 1]; //!< sets aside enough memory to save the first word
-
 			container[br - 1] = 0; //!< saves determinating zero
 
 			for (int j = 0; br > 1; j++)
@@ -30,17 +29,6 @@ Vector<char*> splitBySpace(char* other) //!< splits a sentance by space and retu
 				container[j] = other[i - br]; //!< saves character 
 			}
 
-			if (other[i - varBr] == ' ') //!< verification if this word is not the first in the string
-			{
-				container = new char[varBr - 1]; //!< sets aside memory for word
-				container[varBr - 1] = 0; //!< saves determinating zero
-
-				for (int j = 0; varBr > 1; j++)
-				{
-					varBr--;  //!< reduce varBr by one
-					container[j] = other[i - varBr]; //!< saves character
-				}
-			}
 			br = 0; //!< sets br to zero to be ables to save the size of the next word
 			separetedWords.push_back(container);
 		}

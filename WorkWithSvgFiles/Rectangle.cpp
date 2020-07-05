@@ -111,12 +111,7 @@ const char * Rectangle::getColour() const
 
 void Rectangle::save(std::ostream & out) //!< this method writes in the file and saves the rectangle information in it
 {                                        //!< there are specific standarts that must be met in order to create svg file successfully
-	out << "  <rect x=\"" << getX()
-		<< "\" y=\"" << getY()
-		<< "\" width=\"" << getWidth()
-		<< "\" height=\"" << getHeight()
-		<< "\" fill=\"" << getColour()
-		<< "\" />" << std::endl;
+	out << "  <rect x=\"" << getX() << "\" y=\"" << getY() << "\" width=\"" << getWidth() << "\" height=\"" << getHeight() << "\" fill=\"" << getColour() << "\" />" << std::endl;
 }
 
 void Rectangle::print() //!< shows rectangle information on the console

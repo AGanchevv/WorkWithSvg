@@ -98,11 +98,7 @@ const char * Circle::getColour() const
 
 void Circle::save(std::ostream& out) //!< this method writes in the file and saves the rectangle information in it
 {                                    //!< there are specific standarts that must be met in order to create svg file successfully
-	out << "  <circle cx=\"" << getX()
-		<< "\" cy=\"" << getY()
-		<< "\" r=\"" << getR()
-		<< "\" fill=\"" << getColour()
-		<< "\" />" << std::endl;
+	out << "  <circle cx=\"" << getX() << "\" cy=\"" << getY() << "\" r=\"" << getR() << "\" fill=\"" << getColour() << "\" />" << std::endl;
 }
 
 void Circle::print() //!< shows circle information on the console
